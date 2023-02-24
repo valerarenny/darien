@@ -1,0 +1,46 @@
+server:
+  port: 8003
+  forward-headers-strategy: framework
+spring:
+  sql:
+    init:
+      platform: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    jackson:
+      time-zone: America/Buenos_Aires
+    servlet:
+      multipart:
+        enabled: true
+        file-size-threshold: 0
+        max-file-size: 5000000
+        max-request-size: 10000000
+logging:
+  file-path: _/logs/mareas_api/local
+  file:
+    name: "soccerapp.log"
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: ERROR
+    org.springframework.boot.SpringApplication: WARN
+    org.springframework.web: WARN
+    org.springframework.data: WARN
+    org.hibernate: WARN
+    org.hibernate.stat: WARN
+    springfox: WARN
+    com.test.darien: DEBUG
+info:
+  version: 1.0.0
+  title: Proyecto SoccerApi
+  Description: Proyecto que registra jugadores y equipos de futbol
